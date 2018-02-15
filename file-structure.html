@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -16,7 +16,7 @@ body {
 }
 td, table, th {
 	padding: 1em;
-	border: 1px solid #000;
+	border: none;
 }
 table {
 	border-collapse: collapse;
@@ -31,6 +31,7 @@ th {
 
 <div ng-controller="fileCtrl" class="wrapper">
   <p>Browse files</p>
+  <p>Click on headings to sort by field</p>
   <table>
     <tr>
      <th ng-click="sortType = 'type'"> <a href="#">File type</a></th>
