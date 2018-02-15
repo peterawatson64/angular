@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<title>Angular js file browser</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+<script src="filestructureController.js"></script>
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif
+}
+.wrapper {
+	width: 60%;
+	max-width: 750px;
+	margin: 0 auto;
+}
+td, table, th {
+	padding: 1em;
+	border: 1px solid #000;
+}
+table {
+	border-collapse: collapse;
+}
+th {
+	background: #cecece;
+}
+}
+</style>
+</head>
+<body ng-app="fileApp"  ng-app="sortApp">
+
+<div ng-controller="fileCtrl" class="wrapper">
+  <p>Browse files</p>
+  <table>
+    <tr>
+     <th ng-click="sortType = 'type'"> <a href="#">File type</a></th>
+      <th ng-click="sortType = 'name'"><a href="#">Name</a></th>
+      <th ng-click="sortType = 'added'"><a href="#">Date added</a></th>
+    </tr>
+    <tr ng-repeat="file in filelisting | orderBy:sortType:sortReverse">
+      <td>{{file.type}}</td>
+      <td ng-show="{{(file.type == 'Folder') ? true : false}}">{{file.name}} - show files:
+        <input type="checkbox" ng-model="showFiles">
+        <ul ng-show="showFiles">
+          <!-- this works but shows all data -->         
+          <li>{{file.files}}</li>
+        </ul></td>
+      <td ng-show="{{(file.type !== 'Folder') ? true : false}}">{{file.name}}</td>
+      <td>{{file.added}}</td>
+    </tr>
+  </table>
+</div>
+</body></html>
